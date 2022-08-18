@@ -1,0 +1,101 @@
+class DataSource extends CalendarDataSource {
+    DataSource(List<Appointment> source) {
+   appointments = source;
+ }
+}
+
+Future<DataSource> _getCalendarDataSource() async{
+
+  List<Appointment> appointments = <Appointment>[];
+
+  final cadaEvento = await DBProviderEventos.db.getTodosEventos();
+
+  cadaEvento.map((elemento) {
+
+    appointments.add(
+    
+      Appointment(
+        
+        startTime: elemento.fechaInicio,
+        endTime: elemento.fechaFin,
+        subject: elemento.titulo,
+        color: Colors.blue,
+        startTimeZone: '',
+        endTimeZone: '',
+
+      )
+
+    );
+    
+  });
+
+  return DataSource(appointments);
+
+
+
+
+
+
+
+
+
+
+
+  ListTile(
+                          
+    leading: const Icon(Icons.pending_actions_outlined),
+    title: Text(scans[i].tipo_trabajo, style: const TextStyle(fontWeight: FontWeight.bold),),
+    subtitle: Text(scans[i].nombre_cliente.toString()),
+    trailing: const Icon(Icons.keyboard_arrow_right),
+    iconColor: Colors.black87,
+
+    onTap: () {
+      
+      Navigator.pushNamed(context, 'detallesTrabajo',
+
+        arguments: [
+
+          scans[i].id,
+          scans[i].estado_actual,
+          scans[i].nombre_cliente,
+          scans[i].tipo_trabajo,
+          scans[i].direccion,
+          scans[i].observaciones,
+          scans[i].fecha,
+                
+        ]
+      
+      );
+      
+    },                                                
+
+    ),
+
+
+
+
+
+
+ _splitClipbroard(){
+
+    const texto = 'tipo_trabajo: Montaje de split; nombre_cliente: Raulito; fecha: 17/05/2022; obs: Sin observacione';
+    final prueba = texto.split(';');
+
+    Map<String, dynamic> datosTrabajo = {};
+
+    for(int i = 0; i < prueba.length; i++){
+
+      final clave = prueba[i].split(':');
+
+      datosTrabajo[clave[0].trim()] = clave[1].trim();
+
+    }
+
+    setState(() {
+      
+      dropdownvalue_nombres = datosTrabajo['nombre_cliente'];
+      getInfo();
+      
+    });
+
+  }
