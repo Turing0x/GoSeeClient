@@ -54,12 +54,14 @@ class _FinalizadosPageState extends State<FinalizadosPage> {
 
                       children: [
 
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+
                         Container(
 
                           margin: const EdgeInsets.all(10),
                           padding: const EdgeInsets.only(top: 60),
                           width: double.infinity,
-                          height: 500,
+                          height: MediaQuery.of(context).size.height * 0.4,
                           child: SvgPicture.asset('lib/images/empty..finalizados.svg'),
 
                         ),

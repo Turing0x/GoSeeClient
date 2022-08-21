@@ -21,7 +21,75 @@ class _TrabajosPageState extends State<TrabajosPage> {
 			builder: (BuildContext context, AsyncSnapshot<List<Trabajo>> snapshot) {
 
         if (!snapshot.hasData) {
-					return const Center(child: CircularProgressIndicator());
+
+					return Scaffold(
+
+            floatingActionButton: FloatingActionButton.extended(
+
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              elevation: 2,
+              onPressed: null,
+              label: Row(
+                
+                children: const [
+
+                  Icon(Icons.handyman_outlined, color: Colors.white),
+
+                  SizedBox(width: 10),
+
+                  Text('Nuevo trabajo')
+
+                ]
+
+              ),
+
+            ),
+
+            appBar: AppBar(
+            
+              title: titloAppBar('Trabajos pendientes'),
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0,            
+
+            ),
+
+            body: SingleChildScrollView(
+
+              child: SafeArea(
+
+                child: Center(
+                    
+                  child: Column(
+
+                    children: [
+
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+
+                      Container(
+
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.only(top: 60),
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.43,
+                        child: SvgPicture.asset('lib/images/empty..trabajos.svg'),
+
+                      ),
+                      
+                      const Text('Cuando crees un nuevo trabajo aparecerá aquí')
+
+                    ],
+
+                  )
+                  
+                ),
+
+              ),
+
+            ),
+
+          );
+
 				}
 
 				final scans = snapshot.data;
@@ -84,12 +152,14 @@ class _TrabajosPageState extends State<TrabajosPage> {
 
                       children: [
 
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.13),
+
                         Container(
 
                           margin: const EdgeInsets.all(10),
                           padding: const EdgeInsets.only(top: 60),
                           width: double.infinity,
-                          height: 500,
+                          height: MediaQuery.of(context).size.height * 0.43,
                           child: SvgPicture.asset('lib/images/empty..trabajos.svg'),
 
                         ),

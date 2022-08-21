@@ -226,7 +226,7 @@ class _DetallesTrabajosPage extends State<DetallesTrabajosPage> {
 
                         ),
 
-                        const SizedBox(width: 80,),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.1,),
 
                         ElevatedButton.icon(
                               

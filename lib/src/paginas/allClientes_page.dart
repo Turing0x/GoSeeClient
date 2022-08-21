@@ -19,7 +19,76 @@ class _AllClientesPage extends State<AllClientesPage> {
 			builder: (BuildContext context, AsyncSnapshot<List<Persona>> snapshot) {
         
 				if (!snapshot.hasData) {
-					return const Center(child: CircularProgressIndicator());
+          
+					return Scaffold(
+
+            floatingActionButton: FloatingActionButton.extended(
+
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              elevation: 2,
+              onPressed: () => Navigator.pushReplacementNamed(context, 'nuevoCliente'),
+              label: Row(
+                
+                children: const [
+
+                  Icon(Icons.person_add_alt, color: Colors.white),
+
+                  SizedBox(width: 10),
+
+                  Text('Nuevo cliente')
+
+                ]
+
+              ),
+
+            ),
+
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              
+              title: titloAppBar('Listado de clientes'),
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0,            
+              
+            ),
+
+            body: SingleChildScrollView(
+
+              child: SafeArea(
+
+                child: Center(
+                    
+                  child: Column(
+
+                    children: [
+
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+
+                      Container(
+
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.only(top: 60),
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.38,
+                        child: SvgPicture.asset('lib/images/empty..clientes.svg'),
+
+                      ),
+                      
+                      const Text('Cuando crees un nuevo cliente aparecerá aquí')
+
+                    ],
+
+                  )
+                  
+                ),
+
+              ),
+
+            ),
+
+          );
+
 				}
 
 				final scans = snapshot.data;
@@ -72,12 +141,14 @@ class _AllClientesPage extends State<AllClientesPage> {
 
                       children: [
 
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+
                         Container(
 
                           margin: const EdgeInsets.all(10),
                           padding: const EdgeInsets.only(top: 60),
                           width: double.infinity,
-                          height: 500,
+                          height: MediaQuery.of(context).size.height * 0.38,
                           child: SvgPicture.asset('lib/images/empty..clientes.svg'),
 
                         ),
